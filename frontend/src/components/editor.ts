@@ -54,6 +54,7 @@ import {
   type LampMount,
   type OutdoorArea,
   type OutdoorType,
+  type RidgeDirection,
   type RoofType,
   type Placement,
   type Opening,
@@ -3769,6 +3770,14 @@ export class Fp3dEditor extends LitElement {
             ${(["none", "flat", "gable"] as const).map((t) => html`<option value=${t} ?selected=${t === s.roof.type}>${this.t(`roof_${t}`)}</option>`)}
           </select></label
         >
+        ${s.roof.type === "gable"
+          ? html`<label class="fp3d-field"
+              >${this.t("roof_ridge")}
+              <select @change=${(e: Event) => set({ roof: { ...s.roof, ridge: (e.target as HTMLSelectElement).value as RidgeDirection } })}>
+                ${(["long", "short"] as const).map((r) => html`<option value=${r} ?selected=${r === (s.roof.ridge ?? "long")}>${this.t(`roof_ridge_${r}`)}</option>`)}
+              </select></label
+            >`
+          : nothing}
         ${s.roof.type === "gable" ? this.num(this.t("roof_pitch"), s.roof.pitch, (v) => set({ roof: { ...s.roof, pitch: Math.min(60, Math.max(5, v)) } }), 1, 5) : nothing}
         ${s.roof.type !== "none" ? this.num(this.t("roof_overhang"), s.roof.overhang, (v) => set({ roof: { ...s.roof, overhang: Math.min(2, Math.max(0, v)) } }), 0.05, 0) : nothing}
         ${this.hass
