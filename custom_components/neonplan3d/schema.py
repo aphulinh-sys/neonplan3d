@@ -172,6 +172,8 @@ ROOF_SCHEMA = vol.Schema(
         vol.Optional("type", default="none"): vol.In(["none", "flat", "gable"]),
         vol.Optional("pitch", default=35): vol.All(vol.Coerce(float), vol.Range(min=5, max=60)),
         vol.Optional("overhang", default=0.4): vol.All(vol.Coerce(float), vol.Range(min=0, max=2)),
+        # ridge of a gable roof along the longer or the shorter side of the outline
+        vol.Optional("ridge"): vol.In(["long", "short"]),
     },
     extra=vol.ALLOW_EXTRA,
 )
