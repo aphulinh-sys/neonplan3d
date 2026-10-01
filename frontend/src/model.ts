@@ -160,12 +160,17 @@ export interface FreeWall {
 
 export type RoofType = "none" | "flat" | "gable";
 
+/** Which side of the floor outline a gable roof's ridge runs along. */
+export type RidgeDirection = "long" | "short";
+
 export interface RoofSettings {
   type: RoofType;
   /** Slope of a gable roof in degrees. */
   pitch: number;
   /** How far the roof reaches beyond the outer walls (metres). */
   overhang: number;
+  /** Ridge of a gable roof along the longer (default) or the shorter side, e.g. for terraced houses. */
+  ridge?: RidgeDirection;
 }
 
 export interface BuildingSettings {
