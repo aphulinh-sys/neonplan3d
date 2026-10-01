@@ -53,8 +53,9 @@ export function buildRoof(b: Building): RoofGeometry | null {
     }
     return { floor, solid, lines };
   }
-  // gable: the ridge runs along the longer side
-  const alongX = x1 - x0 >= z1 - z0;
+  // gable: the ridge runs along the longer side, or along the shorter one when asked for
+  const longerX = x1 - x0 >= z1 - z0;
+  const alongX = roof.ridge === "short" ? !longerX : longerX;
   const half = (alongX ? z1 - z0 : x1 - x0) / 2;
   const rise = half * Math.tan(roof.pitch * DEG);
   // coordinates: u along the ridge, v across (from -half to +half)
