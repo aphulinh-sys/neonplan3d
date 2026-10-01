@@ -158,7 +158,7 @@ Walls are created automatically: every shared edge of two rooms becomes an inter
 | **Exterior wall (m)**, **Interior wall (m)** | Wall thicknesses |
 | **Grid (m)** | Drawing step |
 | **North** | Degrees clockwise from up. Needed for sunlight |
-| **Roof** | No roof, flat roof or gable roof, with pitch and overhang |
+| **Roof** | No roof, flat roof or gable roof, with pitch, overhang and the ridge along the long or the short side (terraced houses) |
 | **Weather entity** | Which weather entity drives the weather outside, see [6.2](#62-weather-outside) |
 | **Weather effects in 3D** | Which effects are shown |
 
